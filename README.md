@@ -35,7 +35,7 @@ Windows and Linux systems.
 ### Version identification
 
 Currently, there are different device drivers in the LinuxSDK package named
-`Dta`, `DtaNw`, `Dtu`, `DtPcie`. Each driver has a distinct version number.
+`Dta`, `DtaNw`, `Dtu`, `DtPcie0`, `DtPcieNw`. Each driver has a distinct version number.
 It is not possible to provide three different DKMS packages since these drivers
 interact with each other in the kernel (at least `Dta` and `DtaNw`) and
 contain common code. It is important that a consistent combination of drivers
@@ -104,10 +104,20 @@ Options:
   --keep
       Keep temporary files. By default, they are deleted.
 
+  -l
+  --load-drivers
+      Do not build anything, just load all installed Dektec drivers and
+      test the load.
+
   -p
   --prepare
       Only prepare the DKMS file structure in the temporary directory.
       Do not build DKMS packages, do not clean up files.
+
+  -t
+  --test-package
+      After building the package, install it, load the drivers, uninstall
+      the package.
 
   --uninstall
       Directly uninstall Dektec DKMS from the current system. Do not properly
